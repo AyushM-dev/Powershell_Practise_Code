@@ -10,8 +10,8 @@ jobs:
       - name: Fetch Latest 25 Release
         shell: pwsh
         run: |
-        $headers = @{
-"User-Agent" = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/133.0.0.0 Safari/537.36 Edg/133.0.0.0"
-}
-        $response = Invoke-RestMethod -Uri "https://www.payerpath.com/UI/Version/GetVersionHistory" -Method Get -Headers $headers
-        $response | Select-Object -ExpandProperty Release -First 25
+          $headers = @{
+              "User-Agent" = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/133.0.0.0 Safari/537.36 Edg/133.0.0.0"
+              }
+          $response = Invoke-RestMethod -Uri "https://www.payerpath.com/UI/Version/GetVersionHistory" -Method Get -Headers $headers
+          $response | Select-Object -ExpandProperty Release -First 25
