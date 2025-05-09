@@ -1,0 +1,22 @@
+name: Compare App Release
+
+on:
+  workflow_dispatch:
+
+jobs:
+  compare-release:
+    runs-on: windows-latest
+    steps:
+      - name: Fetch Latest 25 Release
+        shell: pwsh
+        run: |
+        $header = @{"User-Agent" = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/133.0.0.0 Safari/537.36 Edg/133.0.0.0"}
+        $response = Invoke-RestMethod -Uri "https://www.payerpath.com/UI/Version/GetVersionHistory" -Method Get -Headers $headers
+        $response | Select-Object -First 25
+        
+
+      # Runs a set of commands using the runners shell
+      - name: Run a multi-line script
+        run: |
+          echo Add other actions to build,
+          echo test, and deploy your project.
